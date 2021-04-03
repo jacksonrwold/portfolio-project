@@ -3,21 +3,39 @@ import React, { useState } from "react"
 import PortfolioItem from "./portfolio-item"
 
 function PortfolioContainer() {
-    const [stuff, setStuff] = useState("I'm stuff");
+    const [pageTitle, setPageTitle] = useState("Welcome to my portfolio");
+    const [data, setData] = useState([
+        { title: "Quip", category: "eCommerce" },
+        { title: "Eventbrite", category: "Scheduling" },
+        { title: "Ministry Safe", category: "Enterprise" },
+        { title: "SwingAway", category: "eCommerce" }
+    ])
 
-    const portfolioItems = () => {
-        const data = ["Quip", "Eventbrite", "Ministry Safe"]
-
+    function portfolioItems() {
         return data.map(item => {
-            return <PortfolioItem name={item}/>
-        })
+            return <PortfolioItem title={item.title} url="google.com"/>
+        });
+    }
+
+    function handlePageTitleUpdate() {
+        setPageTitle("Something Else");
+    }
+
+    function handleFilter(filter) {
+        setData(data.filter(item => {
+            return item.category === filter;
+        }));
     }
 
     return (
         <div>
-            <h1>{stuff}</h1>
+            <h1>{pageTitle}</h1>
 
-            <PortfolioItem name="Test" parentState={stuff} updateParentState={setStuff} />
+            <button onClick={() => handleFilter("eCommerce")}>eCommerce</button>
+            <button onClick={() => handleFilter("Scheduling")}>Scheduling</button>
+            <button onClick={() => handleFilter("Enterprise")}>Enterprise</button>
+
+            {portfolioItems()}
         </div>
     )
 }
