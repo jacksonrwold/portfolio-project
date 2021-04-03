@@ -9,8 +9,7 @@ export default class App extends Component {
       <div className='app'>
         <h1>Jackson React Starter</h1>
         <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
-        <PortfolioContainer index="0"/>
-        <PortfolioContainer index="1"/>
+        <PortfolioContainer />
       </div>
     );
   }

@@ -2,12 +2,6 @@ import React, { Component } from "react";
 
 import PortfolioItem from "./portfolio-item"
 
-const data = [
-    { "name": "Jackson", "age": 18},
-    { "name": "Makenna", "age": "Old"}
-]
-
-
 export default class PortfolioContainer extends Component {
     constructor() {
         super();
@@ -15,19 +9,18 @@ export default class PortfolioContainer extends Component {
         console.log("Hello");
     }
     
+    portfolioItems() {
+        const data = ["Quip", "Eventbrite", "Ministry Safe"]
+
+        return data.map(item => {
+            return <PortfolioItem name={item}/>
+        })
+    }
+
     render() {
-        const getName = () => {
-            return data[this.props.index]["name"];
-        }
-
-        const getAge = () => {
-            return data[this.props.index]["age"];
-        }
-
         return (
             <div>
-                <PortfolioItem />
-                <h2>{getName()} is {getAge()}</h2>
+                {this.portfolioItems()}
             </div>
         )
     }
