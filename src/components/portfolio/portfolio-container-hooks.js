@@ -17,7 +17,7 @@ function PortfolioContainer() {
         <div>
             <h1>{stuff}</h1>
 
-            {portfolioItems()}
+            <PortfolioItem name="Test" parentState={stuff} updateParentState={setStuff} />
         </div>
     )
 }
