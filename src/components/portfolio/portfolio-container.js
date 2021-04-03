@@ -6,7 +6,9 @@ export default class PortfolioContainer extends Component {
     constructor() {
         super();
 
-        console.log("Hello");
+        this.state = {
+            stuff: "I'm stuff"
+        }
     }
     
     portfolioItems() {
@@ -20,6 +22,8 @@ export default class PortfolioContainer extends Component {
     render() {
         return (
             <div>
+                <h1>{this.state.stuff}</h1>
+
                 {this.portfolioItems()}
             </div>
         )
