@@ -4,6 +4,7 @@ import PortfolioItem from "./portfolio-item"
 
 function PortfolioContainer() {
     const [pageTitle, setPageTitle] = useState("Welcome to my portfolio");
+    const [isLoading, setIsLoading] = useState(true)
     const [search, setSearch] = useState("")
     const [isSearching, setIsSearching] = useState(false)
     const [data, setData] = useState([
