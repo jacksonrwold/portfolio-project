@@ -11,7 +11,7 @@ function PortfolioContainer() {
     const [search, setSearch] = useState("")
     const [isSearching, setIsSearching] = useState(false)
 
-    const [data, setData] = useState([{ name:"Loading...", url:"Loading"}])
+    const [data, setData] = useState([{ id: 0, name:"Loading..."}])
 
     useEffect(() => {
         axios

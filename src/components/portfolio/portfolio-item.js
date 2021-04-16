@@ -4,9 +4,14 @@ import { Link } from "react-router-dom"
 export default function(props) {
     return (
         <div>
-            <h1>{props.title}</h1>
-
-            {props.title === "Loading..." ? null : <Link to={`portfolio/${props.slug}`}>Link</Link>}
+            {props.title === "Loading..." ? null : 
+            
+            <div>
+                <h1>{props.title}</h1>
+                <Link to={`portfolio/${props.slug}`}>Link</Link>
+            </div>
+            
+            }
         </div>
     )
 }
