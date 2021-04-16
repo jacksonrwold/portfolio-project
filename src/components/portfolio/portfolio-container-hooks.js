@@ -1,23 +1,34 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import axios from "axios"
 
 import PortfolioItem from "./portfolio-item"
 
 function PortfolioContainer() {
     const [pageTitle, setPageTitle] = useState("Welcome to my portfolio");
+
     const [isLoading, setIsLoading] = useState(true)
+
     const [search, setSearch] = useState("")
     const [isSearching, setIsSearching] = useState(false)
-    const [data, setData] = useState([
-        { title: "Quip", category: "eCommerce", slug: "quip" },
-        { title: "Eventbrite", category: "Scheduling", slug: "eventbrite"  },
-        { title: "Ministry Safe", category: "Enterprise", slug: "ministry-safe"  },
-        { title: "SwingAway", category: "eCommerce", slug: "swingaway"  }
-    ])
-    
+
+    const [data, setData] = useState([{ name:"Loading...", url:"Loading"}])
+
+    useEffect(() => {
+        axios
+          .get("https://jacksonrwolddev.devcamp.space/portfolio/portfolio_items")
+          .then(response => {
+            console.log(response)
+            console.log(response.data.portfolio_items)
+            setData(response.data.portfolio_items)
+          })
+          .catch(error => {
+            console.log(error)
+          })
+    }, []) 
 
     function portfolioItems() {
         return data.map(item => {
-            return <PortfolioItem title={item.title} slug={item.slug} />
+            return <PortfolioItem key={item.id} title={item.name} slug={item.id} />
         });
     }
 

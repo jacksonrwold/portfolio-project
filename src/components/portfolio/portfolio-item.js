@@ -6,7 +6,7 @@ export default function(props) {
         <div>
             <h1>{props.title}</h1>
 
-            <Link to={`portfolio/${props.slug}`}>Link</Link>
+            {props.title === "Loading..." ? null : <Link to={`portfolio/${props.slug}`}>Link</Link>}
         </div>
     )
 }
